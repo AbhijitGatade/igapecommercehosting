@@ -17,8 +17,8 @@ router.post("/save", async(req, res)=>{
         let base64image = body.data.image;
         if(base64image != "")
         {
-            let randomname = (Math.random() + 1).toString(36).substring(7);
-            base64image = base64image.replace(/^data:image\*;base64,/, "");
+            let randomname = (Math.random() + 1).toString(36).substring(7);         
+            base64image = base64image.replace(/^data:image\/[a-z]*;base64,/, "");  
             productcategory.imagepath = "productcategories/" + randomname + ".png";
             fs.writeFile("assets/" + productcategory.imagepath, base64image, 'base64', function(err){
                 if(err)
